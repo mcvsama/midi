@@ -298,8 +298,9 @@ class ChannelRouter(Window):
 
     def process(this, event):
         events = []
-        print event
         if event.port == this.input_port:
+            if event.type != SYSRT_CLOCK:
+                print event
             # Route data from configured input channel:
             if event.channel == this.input_channel:
                 events += this.track_notes(event)
